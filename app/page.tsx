@@ -50,6 +50,11 @@ export default function Home() {
           href="/examples/combobox-infinite-scroll"
           description="Dropdown-like list that loads items from a public API on scroll."
         />
+        <ExampleCard
+          title="React Query Hooks"
+          href="/examples/react-query-hooks"
+          description="Custom useFetchQuery and useMutateRequest built on Axios and React Query."
+        />
       </section>
     </main>
   );

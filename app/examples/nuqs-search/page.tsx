@@ -1,9 +1,6 @@
 "use client";
 
-// This example is intentionally simple.
-// The goal is to explain the concept clearly,
-// not to build a complex production system.
-
+import { Suspense } from "react";
 import { parseAsString, useQueryState } from "nuqs";
 
 import { SearchInput } from "@/components/search-input";
@@ -17,7 +14,7 @@ const ALL_ITEMS = [
   "Dashboard patterns",
 ];
 
-export default function NuqsSearchExamplePage() {
+function NuqsSearchContent() {
   const [search, setSearch] = useQueryState(
     "q",
     parseAsString.withDefault("").withOptions({
@@ -80,5 +77,23 @@ export default function NuqsSearchExamplePage() {
         </ul>
       </section>
     </main>
+  );
+}
+
+export default function NuqsSearchExamplePage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="mx-auto flex min-h-screen max-w-3xl flex-col gap-6 px-6 py-10">
+          <section className="space-y-2">
+            <h1 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+              nuqs URL State Example
+            </h1>
+          </section>
+        </main>
+      }
+    >
+      <NuqsSearchContent />
+    </Suspense>
   );
 }

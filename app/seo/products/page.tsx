@@ -3,6 +3,7 @@
 // not to build a complex production system.
 
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 import { fetchAllProducts } from "@/features/products/data";
 import { filterProducts } from "@/features/products/logic";
@@ -49,12 +50,13 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         </p>
       </section>
 
-      <ProductsPageView
-        products={products}
-        search={search}
-        category={category}
-      />
+      <Suspense fallback={null}>
+        <ProductsPageView
+          products={products}
+          search={search}
+          category={category}
+        />
+      </Suspense>
     </main>
   );
 }
-
