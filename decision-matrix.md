@@ -180,10 +180,7 @@ import { parseAsString, useQueryState } from "nuqs";
 const ITEMS = ["apple", "banana", "orange"];
 
 export default function SearchPage() {
-  const [search, setSearch] = useQueryState(
-    "q",
-    parseAsString.withDefault(""),
-  );
+  const [search, setSearch] = useQueryState("q", parseAsString.withDefault(""));
 
   const filtered = ITEMS.filter((item) =>
     item.toLowerCase().includes(search.toLowerCase()),
@@ -288,3 +285,67 @@ export default function UsersDashboard() {
 In practice, many apps mix both approaches: SEO pages for public content and
 client-heavy dashboards for signed-in users.
 
+---
+
+## `useTransition` for Non-Blocking UI
+
+`useTransition` lets you update state without blocking the UI.
+
+Use it when:
+
+- You are filtering a large list or performing a heavy client-side update.
+- You want the user to keep typing or interacting while the update happens.
+
+Do **not** use it when:
+
+- You are updating a controlled input (like a text field's value). Controlled inputs must update synchronously.
+
+---
+
+## `useSyncExternalStore`
+
+This hook lets you subscribe to external data sources safely in concurrent React.
+
+Use it when:
+
+- You are integrating with non-React state (e.g., browser APIs like `window.innerWidth`, WebSocket connections, or legacy stores).
+- You want to prevent UI "tearing" (showing different values for the same state during a single render pass).
+
+Do **not** use it when:
+
+- The state is entirely local to the component (use `useState`).
+- You can manage the state through React Context or standard props.
+
+---
+
+## `useEffect` vs `useDeepEffect`
+
+`useEffect` fires when its dependencies change, comparing them by reference (`===`).
+
+Use `useDeepEffect` when:
+
+- Your dependencies include objects, arrays, or deep structures that are re-created on every render (e.g., received as props).
+- You want the effect to run only when the _actual values_ inside the object change.
+
+Use standard `useEffect` when:
+
+- Your dependencies are primitives (`string`, `number`, `boolean`).
+- Your dependencies contain functions or DOM nodes (which cannot be serialized for deep comparison).
+
+---
+
+## `proxy.ts` (Modular Validation)
+
+`proxy.ts` (formerly `middleware.ts`) runs on the server before a request is completed or a route is rendered.
+
+Use it for:
+
+- Checking authentication via cookies before hitting protected routes (redirecting to `/login`).
+- Implementing IP-based rate limiting or bot protection.
+- Detecting browser locales and rewriting/redirecting URLs.
+
+Do **not** use it for:
+
+- Fetching heavy database queries (keep it fast — it runs on every request).
+- API logic or data mutations (use Route Handlers `api/` or Server Actions instead).
+- Rendering HTML.
