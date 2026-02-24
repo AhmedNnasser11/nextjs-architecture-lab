@@ -70,6 +70,11 @@ export default function Home() {
           href="/examples/use-sync-external-store"
           description="Subscribe to a global counter that lives outside React, safely in concurrent mode."
         />
+        <ExampleCard
+          title="useDeepEffect"
+          href="/examples/use-deep-effect"
+          description="Custom hook that deeply compares dependencies — fires only when values actually change."
+        />
       </section>
     </main>
   );

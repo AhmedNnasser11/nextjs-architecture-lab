@@ -25,8 +25,9 @@
 | 10  | **Navigation Feedback**        | `/navigation-example`                | Global top loading bar during route transitions                          | Client          |
 | 11  | **Combobox + Infinite Scroll** | `/examples/combobox-infinite-scroll` | Dropdown list that loads items from an API page by page on scroll        | Client          |
 | 12  | **React Query Hooks**          | `/examples/react-query-hooks`        | Custom `useFetchQuery` & `useMutateRequest` built on Axios + React Query | Client          |
+| 13  | **useDeepEffect**              | `/examples/use-deep-effect`          | Custom hook: like `useEffect` but with deep comparison of dependencies   | Client          |
 
-> 📖 See [`decision-matrix.md`](./decision-matrix.md) for a quick reference on when to use Server vs Client Components, Suspense, Optimistic UI, and URL state management.
+> 📖 See [decision matrix](./decision-matrix.md) for a quick reference on when to use Server vs Client Components, Suspense, Optimistic UI, and URL state management.
 
 ---
 
@@ -49,7 +50,8 @@ ed-repo/
 │       ├── use-optimistic/page.tsx         # Lesson 8
 │       ├── use-sync-external-store/page.tsx# Lesson 9
 │       ├── combobox-infinite-scroll/page.tsx# Lesson 11
-│       └── react-query-hooks/page.tsx      # Lesson 12
+│       ├── react-query-hooks/page.tsx      # Lesson 12
+│       └── use-deep-effect/page.tsx        # Lesson 13
 ├── features/
 │   ├── products/                           # Data, logic, UI for the SEO page
 │   └── users/                              # Data + UI for the dashboard
@@ -58,6 +60,7 @@ ed-repo/
 │   ├── design/primary-button.tsx           # Design-system wrapper
 │   └── search-input.tsx                    # Reusable debounced search
 ├── hooks/
+│   ├── use-deep-effect.ts                  # Deep-comparison useEffect
 │   ├── use-fetch-query.ts                  # Generic GET hook (Axios + React Query)
 │   └── use-mutate-request.ts               # Generic mutation hook
 ├── lib/utils.ts                            # cn() + URL helpers
