@@ -75,6 +75,11 @@ export default function Home() {
           href="/examples/use-deep-effect"
           description="A custom useEffect alternative that deeply compares dependencies, firing only when values actually change."
         />
+        <ExampleCard
+          title="Proxy (Modular Validation)"
+          href="/examples/proxy-validation"
+          description="Splitting proxy.ts into reusable validators — auth, rate limiting, and locale detection composed in one chain."
+        />
       </section>
     </main>
   );
