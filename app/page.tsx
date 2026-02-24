@@ -18,62 +18,62 @@ export default function Home() {
         <ExampleCard
           title="Design System Layer"
           href="/examples/design-system"
-          description="PrimaryButton wrapper around the base button component."
+          description="How to wrap base UI components (like shadcn/ui) to enforce your design system without modifying the source."
         />
         <ExampleCard
           title="SEO Products Page"
           href="/seo/products"
-          description="Server Component using searchParams and server-side data fetching."
+          description="A Server Component that filters data on the backend using searchParams, ensuring the page is fully SEO-friendly."
         />
         <ExampleCard
           title="Dashboard Users Table"
           href="/dashboard/users"
-          description="Client-side table with pagination, search, and API route."
+          description="A Client Component table fetching data from an API route. Optimized for interactivity, not search engines."
         />
         <ExampleCard
           title="Suspense & Streaming"
           href="/examples/suspense-streaming"
-          description="Server Component with two independently streamed sections."
+          description="Loading independent page sections concurrently, streaming HTML to the browser as soon as each is ready."
         />
         <ExampleCard
           title="nuqs URL State"
           href="/examples/nuqs-search"
-          description="Client-side filter synced with the URL query string."
+          description="Syncing React component state with the URL query string to build shareable, bookmarkable UI filters."
         />
         <ExampleCard
           title="Navigation Feedback"
           href="/navigation-example"
-          description="Global top loading bar for navigation feedback."
+          description="Implementing a global top loading bar to provide instant visual feedback during Next.js route transitions."
         />
         <ExampleCard
           title="Combobox Infinite Scroll"
           href="/examples/combobox-infinite-scroll"
-          description="Dropdown-like list that loads items from a public API on scroll."
+          description="A classic dropdown interface that fetches and appends paginated data on the fly as the user scrolls."
         />
         <ExampleCard
           title="React Query Hooks"
           href="/examples/react-query-hooks"
-          description="Custom useFetchQuery and useMutateRequest built on Axios and React Query."
+          description="Custom, reusable data fetching and mutation hooks powered by Axios and @tanstack/react-query."
         />
         <ExampleCard
           title="useTransition"
           href="/examples/use-transition"
-          description="Non-blocking list filtering using useTransition to keep the UI responsive."
+          description="Keeping the UI responsive by moving heavy, non-urgent state updates (like filtering) into the background."
         />
         <ExampleCard
           title="useOptimistic"
           href="/examples/use-optimistic"
-          description="Instant like button feedback before the server responds, with error rollback."
+          description="Updating the UI instantly before the server responds, creating a snappy experience with automatic rollback on error."
         />
         <ExampleCard
           title="useSyncExternalStore"
           href="/examples/use-sync-external-store"
-          description="Subscribe to a global counter that lives outside React, safely in concurrent mode."
+          description="Safely subscribing React components to global state that lives outside of the React tree in concurrent mode."
         />
         <ExampleCard
           title="useDeepEffect"
           href="/examples/use-deep-effect"
-          description="Custom hook that deeply compares dependencies — fires only when values actually change."
+          description="A custom useEffect alternative that deeply compares dependencies, firing only when values actually change."
         />
       </section>
     </main>
