@@ -27,7 +27,7 @@ export function SearchInput({
 
   useEffect(() => {
     onDebouncedChange?.(debouncedValue);
-  }, [debouncedValue, onDebouncedChange]);
+  }, [debouncedValue]);
 
   return (
     <label className="flex flex-col gap-2 text-sm">
