@@ -55,6 +55,21 @@ export default function Home() {
           href="/examples/react-query-hooks"
           description="Custom useFetchQuery and useMutateRequest built on Axios and React Query."
         />
+        <ExampleCard
+          title="useTransition"
+          href="/examples/use-transition"
+          description="Non-blocking list filtering using useTransition to keep the UI responsive."
+        />
+        <ExampleCard
+          title="useOptimistic"
+          href="/examples/use-optimistic"
+          description="Instant like button feedback before the server responds, with error rollback."
+        />
+        <ExampleCard
+          title="useSyncExternalStore"
+          href="/examples/use-sync-external-store"
+          description="Subscribe to a global counter that lives outside React, safely in concurrent mode."
+        />
       </section>
     </main>
   );
