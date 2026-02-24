@@ -5,22 +5,7 @@
 // not to build a complex production system.
 
 import { useEffect, useState } from "react";
-
-function useDebounce<T>(value: T, delayMs: number): T {
-  const [debouncedValue, setDebouncedValue] = useState(value);
-
-  useEffect(() => {
-    const handle = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delayMs);
-
-    return () => {
-      clearTimeout(handle);
-    };
-  }, [value, delayMs]);
-
-  return debouncedValue;
-}
+import { useDebounce } from "use-debounce";
 
 type SearchInputProps = {
   label?: string;
@@ -38,7 +23,7 @@ export function SearchInput({
   onDebouncedChange,
 }: SearchInputProps) {
   const [value, setValue] = useState(initialValue);
-  const debouncedValue = useDebounce(value, delayMs);
+  const [debouncedValue] = useDebounce(value, delayMs);
 
   useEffect(() => {
     onDebouncedChange?.(debouncedValue);
@@ -56,4 +41,3 @@ export function SearchInput({
     </label>
   );
 }
-

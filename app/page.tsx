@@ -43,7 +43,12 @@ export default function Home() {
         <ExampleCard
           title="Navigation Feedback"
           href="/navigation-example"
-          description="useLinkStatus hook showing a loading indicator while navigating."
+          description="Global top loading bar for navigation feedback."
+        />
+        <ExampleCard
+          title="Combobox Infinite Scroll"
+          href="/examples/combobox-infinite-scroll"
+          description="Dropdown-like list that loads items from a public API on scroll."
         />
       </section>
     </main>
