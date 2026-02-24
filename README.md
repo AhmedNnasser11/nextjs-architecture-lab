@@ -118,3 +118,4 @@ Every example is **intentionally minimal** — the goal is to explain the concep
 ## 📄 License
 
 MIT — feel free to use, share, and build on top of these examples.
+"# nextjs-architecture-lab" 
