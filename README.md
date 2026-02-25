@@ -31,6 +31,7 @@
 | 14  | **Proxy (Modular Validation)** | `/examples/proxy-validation`         | Splitting `proxy.ts` into reusable auth, rate-limit, and locale validators | Server          |
 
 > 📖 See [decision matrix](./decision-matrix.md) for a quick reference on when to use Server vs Client Components, Suspense, Optimistic UI, and URL state management.
+> 🏛️ See [Architecture Guide](./ARCHITECTURE.md) for a deep dive into the reasoning behind the project structure and technical decisions.
 
 ---
 
@@ -73,6 +74,7 @@ ed-repo/
 │   ├── validate-auth.ts                    # Auth check (session cookie)
 │   ├── validate-locale.ts                  # Browser language → locale redirect
 │   └── validate-rate-limit.ts              # IP-based rate limiting
+├── ARCHITECTURE.md                         # Detailed architectural decisions
 └── decision-matrix.md                      # Quick-reference decision guide
 ```
 

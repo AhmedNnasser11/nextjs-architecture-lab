@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="mx-auto flex min-h-screen max-w-4xl flex-col gap-8 px-6 py-10">
-      <section className="space-y-2">
+      <section className="space-y-4">
         <h1 className="text-3xl font-semibold text-zinc-900 dark:text-zinc-50">
           Educational Next.js Examples
         </h1>
@@ -12,6 +12,15 @@ export default function Home() {
           explaining key Next.js and React concepts, not on building a complex
           production system.
         </p>
+        <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm text-zinc-800 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-300">
+          <p>
+            <strong>🏛️ Architecture & Decisions:</strong> While these examples
+            are small, they follow specific architectural patterns. See the{" "}
+            <code>ARCHITECTURE.md</code> and <code>decision-matrix.md</code>{" "}
+            files in the repository root for a deep dive into exactly{" "}
+            <em>why</em> the project is structured this way.
+          </p>
+        </div>
       </section>
 
       <section className="grid gap-4 md:grid-cols-2">
@@ -91,6 +100,9 @@ type ExampleCardProps = {
   description: string;
 };
 
+// This card component is intentionally simple.
+// The goal is to keep focus on architectural decisions,
+// not on complex UI abstraction.
 function ExampleCard({ title, href, description }: ExampleCardProps) {
   return (
     <Link
