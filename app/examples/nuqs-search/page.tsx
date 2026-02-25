@@ -1,5 +1,18 @@
 "use client";
 
+// 🏛️ Architecture: nuqs for URL State
+// ✅ لماذا نستخدم nuqs لإدارة حالة URL؟
+// ### Why use nuqs for URL state?
+//
+// We use nuqs to sync component state with the URL.
+//
+// Why?
+// - Filters become shareable links.
+// - State persists on refresh.
+// - Back/forward browser navigation works naturally.
+//
+// This improves usability without complex state management.
+
 import { Suspense } from "react";
 import { parseAsString, useQueryState } from "nuqs";
 
@@ -65,7 +78,10 @@ function NuqsSearchContent() {
 
         <ul className="space-y-1 text-sm text-zinc-800 dark:text-zinc-100">
           {filteredItems.map((item) => (
-            <li key={item} className="rounded bg-zinc-50 px-2 py-1 dark:bg-zinc-800">
+            <li
+              key={item}
+              className="rounded bg-zinc-50 px-2 py-1 dark:bg-zinc-800"
+            >
               {item}
             </li>
           ))}

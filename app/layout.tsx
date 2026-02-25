@@ -20,6 +20,20 @@ export const metadata: Metadata = {
     "Hands-on, intentionally simple examples covering Server Components, Suspense, useOptimistic, useTransition, URL state, and more.",
 };
 
+// 🏛️ Architecture: Server Components by Default
+// ✅ لماذا نستخدم Server Components كافتراضي؟
+// ### Why use Server Components by default?
+//
+// Server Components:
+// - Reduce JavaScript sent to the browser.
+// - Improve performance.
+// - Improve SEO automatically.
+//
+// We only use Client Components when:
+// - We need interactivity (state, effects, event handlers).
+// - The UI depends on browser-only APIs.
+//
+// Defaulting to Server keeps the app fast and lean.
 export default function RootLayout({
   children,
 }: Readonly<{

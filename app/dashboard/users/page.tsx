@@ -1,9 +1,21 @@
 "use client";
 
-// This example is intentionally simple.
-// The goal is to explain the concept clearly,
-// not to build a complex production system.
-
+// 🏛️ Architecture: Dashboard as Client Component
+// ✅ لماذا لوحة التحكم Client Component؟
+// ### Why is the dashboard a Client Component?
+//
+// Dashboards are highly interactive:
+// - Search
+// - Pagination
+// - Sorting
+// - Live updates
+//
+// SEO is not important here.
+//
+// So we prioritize interactivity over static rendering.
+// Client-side rendering gives smoother user interaction.
+//
+// (This example is intentionally simple to explain the concept.)
 import { useEffect, useState } from "react";
 
 import { UsersTable } from "@/features/users/ui";
@@ -76,8 +88,8 @@ export default function UsersDashboardPage() {
         </h1>
         <p className="max-w-2xl text-sm text-zinc-700 dark:text-zinc-300">
           This page is a{" "}
-          <strong className="font-semibold">Client Component</strong>. It fetches
-          data from a{" "}
+          <strong className="font-semibold">Client Component</strong>. It
+          fetches data from a{" "}
           <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
             /api/users
           </code>{" "}

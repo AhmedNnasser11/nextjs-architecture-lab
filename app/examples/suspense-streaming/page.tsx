@@ -1,7 +1,18 @@
-// This example is intentionally simple.
-// The goal is to explain the concept clearly,
-// not to build a complex production system.
-
+// 🏛️ Architecture: Suspense & Streaming
+// ✅ لماذا نستخدم Suspense و Streaming؟
+// ### Why use Suspense and streaming?
+//
+// Instead of waiting for all data to load before rendering,
+// we stream each section as soon as it's ready.
+//
+// Benefits:
+// - Faster perceived performance.
+// - The user sees content immediately.
+// - Better UX on slow networks.
+//
+// This avoids blocking the entire page.
+//
+// (This example is intentionally simple to explain the concept.)
 import { Suspense } from "react";
 
 async function fetchSectionData(label: string, delayMs: number) {

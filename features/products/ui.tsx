@@ -1,7 +1,19 @@
-// This example is intentionally simple.
-// The goal is to explain the concept clearly,
-// not to build a complex production system.
-
+// 🏛️ Architecture: Feature-Based Folders
+// ✅ لماذا نستخدم مجلدات تعتمد على الميزات؟
+// ### Why use feature-based folders?
+//
+// Instead of grouping by type (components, hooks, services),
+// we group related logic together by feature (products, users).
+//
+// Why?
+// - Everything related to one feature lives in one place.
+// - Easier to scale when the project grows.
+// - Reduces cross-folder jumping.
+// - Makes onboarding easier for new developers.
+//
+// This mirrors how real production systems are structured.
+//
+// (This example is intentionally simple to explain the concept.)
 import type { Product } from "./data";
 import { ProductsFilterFormClient } from "./filter-form.client";
 
