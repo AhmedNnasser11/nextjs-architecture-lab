@@ -100,9 +100,18 @@ type ExampleCardProps = {
   description: string;
 };
 
-// This card component is intentionally simple.
-// The goal is to keep focus on architectural decisions,
-// not on complex UI abstraction.
+// 🏛️ Architecture: Intentionally Minimal Code
+// ✅ لماذا الأمثلة صغيرة ومبسطة عمداً؟
+// ### Why are examples intentionally small?
+//
+// The goal is clarity.
+//
+// Each lesson:
+// - Focuses on one concept.
+// - Avoids unnecessary complexity.
+// - Adds comments explaining decisions.
+//
+// This makes learning faster and more effective.
 function ExampleCard({ title, href, description }: ExampleCardProps) {
   return (
     <Link

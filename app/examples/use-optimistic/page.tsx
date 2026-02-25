@@ -1,8 +1,20 @@
 "use client";
 
-// This example is intentionally simple.
-// The goal is to explain the concept clearly,
-// not to build a complex production system.
+// 🏛️ Architecture: useOptimistic
+// ✅ لماذا نستخدم useOptimistic؟
+// ### Why use useOptimistic?
+//
+// Users expect instant feedback.
+//
+// Instead of waiting for the server response,
+// we update the UI immediately.
+//
+// If the server fails,
+// React rolls back automatically.
+//
+// This creates a modern, fast user experience.
+//
+// (This example is intentionally simple to explain the concept.)
 
 import { useOptimistic, useState } from "react";
 
@@ -21,10 +33,10 @@ export default function UseOptimisticExamplePage() {
   const [likes, setLikes] = useState(0);
   const [error, setError] = useState<string | null>(null);
 
-  const [optimisticLikes, addOptimisticLike] = useOptimistic<
-    number,
-    number
-  >(likes, (currentLikes, optimisticDelta) => currentLikes + optimisticDelta);
+  const [optimisticLikes, addOptimisticLike] = useOptimistic<number, number>(
+    likes,
+    (currentLikes, optimisticDelta) => currentLikes + optimisticDelta,
+  );
 
   async function handleLikeClick() {
     setError(null);
@@ -88,4 +100,3 @@ export default function UseOptimisticExamplePage() {
     </main>
   );
 }
-

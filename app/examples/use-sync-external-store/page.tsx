@@ -1,8 +1,19 @@
 "use client";
 
-// This example is intentionally simple.
-// The goal is to explain the concept clearly,
-// not to build a complex production system.
+// 🏛️ Architecture: useSyncExternalStore
+// ✅ لماذا نستخدم useSyncExternalStore؟
+// ### Why use useSyncExternalStore?
+//
+// When state lives outside React (like a custom store),
+// we need a safe way to subscribe.
+//
+// This hook:
+// - Prevents inconsistent state.
+// - Works correctly with concurrent rendering.
+//
+// It is the correct way to read external state in modern React.
+//
+// (This example is intentionally simple to explain the concept.)
 
 import { useSyncExternalStore } from "react";
 
@@ -68,4 +79,3 @@ export default function UseSyncExternalStoreExamplePage() {
     </main>
   );
 }
-

@@ -1,12 +1,24 @@
 "use client";
 
-// This example is intentionally simple.
-// The goal is to explain the concept clearly,
-// not to build a complex production system.
+// 🏛️ Architecture: useTransition
+// ✅ لماذا نستخدم useTransition؟
+// ### Why use useTransition?
+//
+// Heavy updates (like filtering large lists) can block the UI.
+// useTransition moves non-urgent updates to the background.
+//
+// Result:
+// - UI stays responsive.
+// - The user can keep typing smoothly.
+//
+// (This example is intentionally simple to explain the concept.)
 
 import { useMemo, useState, useTransition } from "react";
 
-const ALL_ITEMS = Array.from({ length: 5000 }, (_, index) => `Item ${index + 1}`);
+const ALL_ITEMS = Array.from(
+  { length: 5000 },
+  (_, index) => `Item ${index + 1}`,
+);
 
 export default function UseTransitionExamplePage() {
   const [inputValue, setInputValue] = useState("");
@@ -75,4 +87,3 @@ export default function UseTransitionExamplePage() {
     </main>
   );
 }
-
