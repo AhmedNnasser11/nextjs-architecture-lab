@@ -24,6 +24,7 @@ const DEFAULT_LOCALE = "en";
 
 export function validateLocale(request: NextRequest): NextResponse | null {
     const { pathname } = request.nextUrl;
+    console.log("validateLocale", pathname);
 
     // Check if the URL already has a locale prefix
     const hasLocale = SUPPORTED_LOCALES.some(

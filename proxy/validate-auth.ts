@@ -21,6 +21,7 @@ const PROTECTED_PREFIXES = ["/dashboard", "/settings", "/admin"];
 
 export function validateAuth(request: NextRequest): NextResponse | null {
     const { pathname } = request.nextUrl;
+    console.log("validateAuth", pathname);
 
     // Only check protected routes
     const isProtected = PROTECTED_PREFIXES.some((prefix) =>

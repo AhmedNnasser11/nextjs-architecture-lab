@@ -34,6 +34,7 @@ const ipStore = new Map<string, RateLimitEntry>();
 export function validateRateLimit(request: NextRequest): NextResponse | null {
     // Get the client IP (falls back to "unknown" in dev)
     const ip = request.headers.get("x-forwarded-for") ?? "unknown";
+    console.log("validateRateLimit", ip);
     const now = Date.now();
 
     let entry = ipStore.get(ip);
