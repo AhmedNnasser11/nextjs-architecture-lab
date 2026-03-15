@@ -19,18 +19,12 @@ import { ProductsFilterFormClient } from "./filter-form.client";
 
 type ProductsPageViewProps = {
   products: Product[];
-  search: string;
-  category: string;
 };
 
-export function ProductsPageView({
-  products,
-  search,
-  category,
-}: ProductsPageViewProps) {
+export function ProductsPageView({ products }: ProductsPageViewProps) {
   return (
     <div className="space-y-6">
-      <ProductsFilterFormClient search={search} category={category} />
+      <ProductsFilterFormClient />
       <ProductsTable products={products} />
     </div>
   );

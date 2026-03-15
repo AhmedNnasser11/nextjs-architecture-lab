@@ -3,19 +3,16 @@
 // not to build a complex production system.
 
 import type { Metadata } from "next";
+import type { SearchParams } from "nuqs/server";
 import { Suspense } from "react";
 
 import { fetchAllProducts } from "@/features/products/data";
 import { filterProducts } from "@/features/products/logic";
+import { loadProductsSearchParams } from "@/features/products/search-params";
 import { ProductsPageView } from "@/features/products/ui";
 
-type SearchParams = {
-  q?: string;
-  category?: string;
-};
-
 type ProductsPageProps = {
-  searchParams?: SearchParams;
+  searchParams: Promise<SearchParams>;
 };
 
 export const metadata: Metadata = {
@@ -24,9 +21,10 @@ export const metadata: Metadata = {
     "SEO-friendly products page rendered on the server using searchParams.",
 };
 
-export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const search = searchParams?.q ?? "";
-  const category = searchParams?.category ?? "all";
+export default async function ProductsPage({
+  searchParams,
+}: ProductsPageProps) {
+  const { q: search, category } = await loadProductsSearchParams(searchParams);
 
   const allProducts = await fetchAllProducts();
   const products = filterProducts(allProducts, { search, category });
@@ -51,11 +49,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
       </section>
 
       <Suspense fallback={null}>
-        <ProductsPageView
-          products={products}
-          search={search}
-          category={category}
-        />
+        <ProductsPageView products={products} />
       </Suspense>
     </main>
   );

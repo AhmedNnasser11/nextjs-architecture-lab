@@ -4,54 +4,26 @@
 // The goal is to explain the concept clearly,
 // not to build a complex production system.
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useQueryStates } from "nuqs";
+import { useDebounce } from "use-debounce";
 
-type ProductsFilterFormClientProps = {
-  search: string;
-  category: string;
-};
+import { productsSearchParams } from "./search-params";
 
-export function ProductsFilterFormClient({
-  search,
-  category,
-}: ProductsFilterFormClientProps) {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+export function ProductsFilterFormClient() {
+  const [{ q, category }, setParams] = useQueryStates(productsSearchParams, {
+    shallow: false,
+  });
 
-  const [searchValue, setSearchValue] = useState(search);
-  const [categoryValue, setCategoryValue] = useState(category);
+  const [searchValue, setSearchValue] = useState(q);
+  const [debouncedSearch] = useDebounce(searchValue, 300);
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const params = new URLSearchParams(searchParams.toString());
-
-    const trimmedSearch = searchValue.trim();
-    if (trimmedSearch) {
-      params.set("q", trimmedSearch);
-    } else {
-      params.delete("q");
-    }
-
-    if (categoryValue && categoryValue !== "all") {
-      params.set("category", categoryValue);
-    } else {
-      params.delete("category");
-    }
-
-    const query = params.toString();
-    const url = query ? `${pathname}?${query}` : pathname;
-
-    router.push(url);
-  }
+  useEffect(() => {
+    setParams({ q: debouncedSearch || null }, { scroll: false });
+  }, [debouncedSearch, setParams]);
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-wrap items-center gap-3 rounded-md border border-zinc-200 bg-white p-3 text-sm shadow-sm dark:border-zinc-800 dark:bg-zinc-900"
-    >
+    <div className="flex flex-wrap items-center gap-3 rounded-md border border-zinc-200 bg-white p-3 text-sm shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
       <label className="flex flex-1 items-center gap-2 min-w-[220px]">
         <span className="text-zinc-600 dark:text-zinc-300">Search</span>
         <input
@@ -67,8 +39,16 @@ export function ProductsFilterFormClient({
         <span className="text-zinc-600 dark:text-zinc-300">Category</span>
         <select
           name="category"
-          value={categoryValue}
-          onChange={(event) => setCategoryValue(event.target.value)}
+          value={category}
+          onChange={(event) =>
+            setParams(
+              {
+                category:
+                  event.target.value === "all" ? null : event.target.value,
+              },
+              { scroll: false },
+            )
+          }
           className="rounded-md border border-zinc-300 bg-white px-2 py-1 text-sm text-zinc-900 shadow-sm outline-none focus:border-zinc-500 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-50"
         >
           <option value="all">All</option>
@@ -77,14 +57,6 @@ export function ProductsFilterFormClient({
           <option value="tech">Tech</option>
         </select>
       </label>
-
-      <button
-        type="submit"
-        className="rounded-md bg-zinc-900 px-3 py-1.5 text-sm font-medium text-zinc-50 hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200"
-      >
-        Apply filters
-      </button>
-    </form>
+    </div>
   );
 }
-
